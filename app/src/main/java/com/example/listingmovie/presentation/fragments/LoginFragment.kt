@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.listingmovie.BuildConfig
 import com.example.listingmovie.R
 import com.example.listingmovie.databinding.FragmentLoginBinding
 import com.example.listingmovie.presentation.viewmodel.LoginViewModel
@@ -54,7 +55,14 @@ class LoginFragment : Fragment() {
         binding.btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+
+        val flavor = BuildConfig.FLAVOR
+        if(flavor != "pro"){
+           binding.imgLogo.setImageResource(R.drawable.baseline_broken_image_24)
+        }
+
     }
+
 
     private fun setObserver() {
         viewModel.apply {

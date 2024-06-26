@@ -11,6 +11,24 @@ android {
     namespace = "com.example.listingmovie"
     compileSdk = 34
 
+    flavorDimensions += "version"
+
+    productFlavors {
+        create("free") {
+            dimension = "version"
+            applicationIdSuffix = ".free"
+            versionNameSuffix = "-free"
+            buildConfigField("Boolean", "SHOW_ADS", "true")
+        }
+
+        create("pro") {
+            dimension = "version"
+            applicationIdSuffix = ".pro"
+            versionNameSuffix = "-pro"
+            buildConfigField("Boolean", "SHOW_ADS", "false")
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.listingmovie"
         minSdk = 24
@@ -23,15 +41,20 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -84,6 +107,9 @@ dependencies {
     //coroutines lifecycle scopes
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+
+    debugImplementation("com.github.chuckerteam.chucker:library:3.3.0")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.3.0")
 
     //di
     implementation("com.google.dagger:hilt-android:2.48")
