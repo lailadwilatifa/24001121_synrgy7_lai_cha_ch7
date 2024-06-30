@@ -65,9 +65,12 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":domain"))
 
+<<<<<<< HEAD
     debugImplementation("com.github.chuckerteam.chucker:library:3.3.0")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:3.3.0")
 
+=======
+>>>>>>> 35d3c3c0de593dc9c417e46718c3c82e21b14ae4
     //local unit
     testImplementation("androidx.test:core:1.4.0")
     testImplementation("junit:junit:4.13.2")
